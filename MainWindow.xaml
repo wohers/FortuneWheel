@@ -1,0 +1,71 @@
+﻿<Window x:Class="FortuneWheel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FortuneWheel"
+        Title="Колесо Фортуны" Height="650" Width="900"
+        Background="#1E1E2E">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Колесо -->
+        <Grid Grid.Column="0" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <!-- Указатель -->
+                <Path HorizontalAlignment="Center" VerticalAlignment="Top"
+                      Data="M 0,0 L 20,30 L -20,30 Z"
+                      Fill="Gold" Stroke="DarkGoldenrod" StrokeThickness="2"
+                      Panel.ZIndex="10" Margin="0,0,0,-15"/>
+
+                <!-- Само колесо -->
+                <local:WheelControl x:Name="Wheel" Margin="10"/>
+            </Grid>
+
+            <Button Grid.Row="1" x:Name="SpinButton" Content="КРУТИТЬ!"
+                    Height="50" Width="200" FontSize="20" FontWeight="Bold"
+                    Margin="0,20,0,0" Click="SpinButton_Click"
+                    Background="Gold" BorderBrush="DarkGoldenrod" BorderThickness="3"/>
+        </Grid>
+
+        <!-- Редактор -->
+        <Border Grid.Column="1" Background="#2A2A3E" Margin="10" Padding="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Секторы" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <ListBox x:Name="SegmentsList" Grid.Row="1" Margin="0,0,0,10" Background="#1E1E2E" Foreground="White" BorderBrush="#444">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="15" Height="15" Fill="{Binding Color}" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Text}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Grid.Row="2">
+                    <TextBox x:Name="NewTextTb" Margin="0,0,0,5" Padding="5" Text="Новый сектор" Background="#1E1E2E" Foreground="White" BorderBrush="#444"/>
+
+                    <Button Content="Добавить" Click="AddSegment_Click" Margin="0,5,0,0" Padding="5" Background="#3498DB" Foreground="White" BorderThickness="0"/>
+                    <Button Content="Удалить выбранный" Click="RemoveSegment_Click" Margin="0,5,0,0" Padding="5" Background="#E74C3C" Foreground="White" BorderThickness="0"/>
+
+                    <TextBlock x:Name="ResultText" Text="Выпало: —" Foreground="Gold" FontSize="18" FontWeight="Bold" TextAlignment="Center" Margin="0,20,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
