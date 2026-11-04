@@ -9,6 +9,7 @@ namespace FortuneWheel
     public partial class MainWindow : Window
     {
         private ObservableCollection<WheelSegment> _segments;
+        private MediaPlayer _winPlayer = new MediaPlayer();
 
         // Красивая палитра для автоцветов
         private readonly Color[] _palette = new[]
@@ -57,6 +58,9 @@ namespace FortuneWheel
 
         private void Wheel_SpinFinished(object? sender, int index)
         {
+            var uri = new Uri("D:\\projects\\FortuneWheel\\game-won.wav");
+            _winPlayer.Open(uri);
+            _winPlayer.Play();
             ResultText.Text = $"Выпало: {_segments[index].Text}";
             SpinButton.IsEnabled = true;
         }

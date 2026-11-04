@@ -8,4 +8,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="game-won.wav" />
+    <None Remove="wheel-of-fortune.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="game-won.wav" />
+    <EmbeddedResource Include="wheel-of-fortune.wav" />
+  </ItemGroup>
+
 </Project>

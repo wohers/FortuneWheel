@@ -6,6 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Reflection;
+using System.Windows.Threading;
 
 namespace FortuneWheel
 {
@@ -15,7 +17,10 @@ namespace FortuneWheel
         private readonly RotateTransform _rotateTransform = new(0);
         private List<WheelSegment> _segments = new();
         private double _currentAngle;
-        private double _wheelSize = 450; 
+        private double _wheelSize = 450;
+        private MediaPlayer _mediaPlayer = new MediaPlayer();
+        private DispatcherTimer _spinSoundTimer = new DispatcherTimer();
+        private double _soundDuration = 6.0;
 
         public event EventHandler<int>? SpinFinished;
 
@@ -31,6 +36,20 @@ namespace FortuneWheel
 
             AddVisualChild(_canvas);
             AddLogicalChild(_canvas);
+
+
+            try
+            {
+                var uri = new Uri("D:\\projects\\FortuneWheel\\wheel-of-fortune.wav");
+                _mediaPlayer.Open(uri);
+            }
+            catch
+            {
+
+            }
+
+            _spinSoundTimer.Interval = TimeSpan.FromMilliseconds(150);
+            _spinSoundTimer.Tick += SpinSoundTimer_Tick;
         }
 
         protected override int VisualChildrenCount => 1;
@@ -174,6 +193,10 @@ namespace FortuneWheel
             double fromAngle = _rotateTransform.Angle;
             double targetAngle = fromAngle + extraTurns * 360 + randomOffset;
 
+            _soundDuration = durationSeconds;
+            _spinSoundTimer.Interval = TimeSpan.FromMilliseconds(60);
+            _spinSoundTimer.Start();
+
             var anim = new DoubleAnimation
             {
                 From = fromAngle,
@@ -184,6 +207,9 @@ namespace FortuneWheel
 
             anim.Completed += (s, e) =>
             {
+                _spinSoundTimer.Stop();
+                _mediaPlayer.Stop();
+
                 _rotateTransform.BeginAnimation(RotateTransform.AngleProperty, null);
                 _currentAngle = targetAngle % 360;
                 _rotateTransform.Angle = _currentAngle;
@@ -215,6 +241,24 @@ namespace FortuneWheel
                 startAngle += sweep;
             }
             return _segments.Count - 1;
+        }
+
+        private void SpinSoundTimer_Tick(object? sender, EventArgs e)
+        {
+            _mediaPlayer.Position = TimeSpan.Zero;
+            _mediaPlayer.Play();
+
+            double currentAngle = _rotateTransform.Angle;
+
+            if (_spinSoundTimer.Interval < TimeSpan.FromMilliseconds(300))
+            {
+                _spinSoundTimer.Interval += TimeSpan.FromMilliseconds(10);
+            }
+        }
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
         }
     }
 }
