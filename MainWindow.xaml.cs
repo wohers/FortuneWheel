@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
+// история побед
+// длительность вращения (сек)
 
 namespace FortuneWheel
 {
@@ -10,6 +12,7 @@ namespace FortuneWheel
     {
         private ObservableCollection<WheelSegment> _segments;
         private MediaPlayer _winPlayer = new MediaPlayer();
+        private bool _isSoundEnabled = true;
 
         // Красивая палитра для автоцветов
         private readonly Color[] _palette = new[]
@@ -58,9 +61,13 @@ namespace FortuneWheel
 
         private void Wheel_SpinFinished(object? sender, int index)
         {
-            var uri = new Uri("D:\\projects\\FortuneWheel\\game-won.wav");
-            _winPlayer.Open(uri);
-            _winPlayer.Play();
+            if (_isSoundEnabled)
+            {
+                var uri = new Uri("D:\\projects\\FortuneWheel\\game-won.wav");
+                _winPlayer.Open(uri);
+                _winPlayer.Play();
+            }
+            
             ResultText.Text = $"Выпало: {_segments[index].Text}";
             SpinButton.IsEnabled = true;
         }
@@ -98,6 +105,24 @@ namespace FortuneWheel
         private void UpdateWheel()
         {
             Wheel.SetSegments(new List<WheelSegment>(_segments));
+        }
+
+        private void SoundToggle_Click(object sender, RoutedEventArgs e)
+        {
+            _isSoundEnabled = !_isSoundEnabled;
+
+            Wheel.SetSoundEnabled(_isSoundEnabled);
+
+            if (_isSoundEnabled)
+            {
+                SoundToggleButton.Content = "Звук: Вкл";
+                SoundToggleButton.Background = new SolidColorBrush(Color.FromRgb(39, 174, 96));
+            }
+            else
+            {
+                SoundToggleButton.Content = "Звук: Выкл";
+                SoundToggleButton.Background = new SolidColorBrush(Color.FromRgb(127, 140, 141));
+            }
         }
     }
 }

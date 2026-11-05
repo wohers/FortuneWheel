@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\projects\\FortuneWheel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|d:\\projects\\fortunewheel\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|d:\\projects\\fortunewheel\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|d:\\projects\\fortunewheel\\wheelcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|solutionrelative:wheelcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|d:\\projects\\fortunewheel\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C621017-4FD4-3C52-4822-3A75BEBA320B}|FortuneWheel.csproj|d:\\projects\\fortunewheel\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -27,12 +31,24 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\projects\\FortuneWheel\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\projects\\FortuneWheel\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-11-05T19:35:33.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\projects\\FortuneWheel\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "D:\\projects\\FortuneWheel\\MainWindow.xaml.cs*",
-              "RelativeToolTip": "MainWindow.xaml.cs*",
-              "ViewState": "AgIAACgAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\projects\\FortuneWheel\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-04T12:12:58.155Z",
               "EditorCaption": ""
@@ -45,14 +61,14 @@
               "RelativeDocumentMoniker": "WheelControl.cs",
               "ToolTip": "D:\\projects\\FortuneWheel\\WheelControl.cs",
               "RelativeToolTip": "WheelControl.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAmwBMAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAAwAYBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-04T12:01:20.637Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": ".gitignore",
               "DocumentMoniker": "D:\\projects\\FortuneWheel\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -60,8 +76,7 @@
               "RelativeToolTip": ".gitignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-11-02T21:49:11.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-02T21:49:11.946Z"
             }
           ]
         }

@@ -21,6 +21,7 @@ namespace FortuneWheel
         private MediaPlayer _mediaPlayer = new MediaPlayer();
         private DispatcherTimer _spinSoundTimer = new DispatcherTimer();
         private double _soundDuration = 6.0;
+        private bool _isSoundEnabled = true;
 
         public event EventHandler<int>? SpinFinished;
 
@@ -88,6 +89,11 @@ namespace FortuneWheel
         {
             _segments = segments ?? new List<WheelSegment>();
             Redraw();
+        }
+
+        public void SetSoundEnabled(bool enabled)
+        {
+            _isSoundEnabled = enabled;
         }
 
         private void Redraw()
@@ -245,10 +251,18 @@ namespace FortuneWheel
 
         private void SpinSoundTimer_Tick(object? sender, EventArgs e)
         {
-            _mediaPlayer.Position = TimeSpan.Zero;
-            _mediaPlayer.Play();
+            if (_isSoundEnabled)
+            {
+                try
+                {
+                    _mediaPlayer.Position = TimeSpan.Zero;
+                    _mediaPlayer.Play();
+                }
+                catch
+                {
 
-            double currentAngle = _rotateTransform.Angle;
+                }
+            }
 
             if (_spinSoundTimer.Interval < TimeSpan.FromMilliseconds(300))
             {
